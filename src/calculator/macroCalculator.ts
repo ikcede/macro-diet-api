@@ -1,3 +1,4 @@
+import { activityLevels, genders } from '@/common/constants';
 import BMI from './BMI';
 
 export interface MacronutrientBreakdown {
@@ -12,8 +13,8 @@ export const calculateMacronutrients = (
   age: number,
   height: number, // in cm
   weight: number, // in kg
-  gender: 'male' | 'female',
-  activityLevel: string
+  gender: (typeof genders)[number],
+  activityLevel: (typeof activityLevels)[number]
 ): MacronutrientBreakdown => {
   // Step 1: Calculate BMR using the Mifflin-St Jeor formula
   let BMR: number;
