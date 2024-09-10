@@ -1,13 +1,6 @@
-# Next.js + Jest + MUI
+# Macro Diet API
 
-Built using the recommended NextJS App Router, get started quickly with a Next.js template using:
-
-- The src/ folder
-- App Router
-- Jest + User Events
-- MUI + MUI Icons
-- Prettier for formatting
-- Built in CSS modules
+A simple NextJS API application for calculating macros.
 
 ## Development
 
