@@ -1,6 +1,15 @@
 # Macro Diet API
 
-A simple NextJS API application for calculating macros.
+A NextJS API application for calculating macros.
+
+Built with:
+
+- NextJS
+- v0 by Vercel
+- ChatGPT
+- ClaudeAI
+- zod
+- MUI
 
 ## Development
 
