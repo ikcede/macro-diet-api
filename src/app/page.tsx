@@ -7,6 +7,14 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import CodeIcon from '@mui/icons-material/Code';
+import {
+  Paper,
+  Table,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+} from '@mui/material';
 
 export default function Component() {
   return (
@@ -31,115 +39,135 @@ export default function Component() {
           gutterBottom
           id="introduction"
         >
-          Introduction
+          Macronutrient API
         </Typography>
-        <Typography paragraph>
-          Welcome to our API documentation. This guide will help you
-          understand how to interact with our API endpoints, authenticate
-          your requests, and make the most of our services.
+        <Typography variant="body1" sx={{ mb: 3 }}>
+          This is a sample macronutrient calculator built with Github
+          Codespaces, ChatGPT, Claude AI, and v0 by Vercel. It also uses
+          zod for query validation.
         </Typography>
-        <Typography variant="h3" gutterBottom id="authentication">
+        <Typography variant="h2" gutterBottom id="authentication">
           Authentication
         </Typography>
-        <Typography paragraph>
-          To use our API, you'll need to authenticate your requests. We use
-          OAuth 2.0 for authentication. Here's how to get started:
+        <Typography gutterBottom sx={{ mb: 3 }}>
+          There's no authentication needed for this API, but usage will be
+          limited by NextJS rate limits for the hobby plan.
         </Typography>
-        <ol>
-          <li>Register your application to get a client ID and secret.</li>
-          <li>Implement the OAuth 2.0 flow in your application.</li>
-          <li>
-            Include the access token in the Authorization header of your
-            API requests.
-          </li>
-        </ol>
-        <Typography variant="h3" gutterBottom id="endpoints">
+
+        <Typography variant="h2" sx={{ mb: 3 }}>
           Endpoints
         </Typography>
-        <Typography paragraph>
-          Our API provides the following main endpoints:
+        <Typography variant="h3" gutterBottom>
+          GET <code>/api/macros</code>
         </Typography>
-        <ul>
-          <li>
-            <Typography component="span" fontWeight="bold">
-              /users
-            </Typography>{' '}
-            - Manage user accounts
-          </li>
-          <li>
-            <Typography component="span" fontWeight="bold">
-              /posts
-            </Typography>{' '}
-            - Create, read, update, and delete posts
-          </li>
-          <li>
-            <Typography component="span" fontWeight="bold">
-              /comments
-            </Typography>{' '}
-            - Interact with comments on posts
-          </li>
-        </ul>
-        <Typography paragraph>
-          For detailed information on each endpoint, including
-          request/response formats and examples, please refer to the
-          sections below.
-        </Typography>
-        <Typography variant="h3" gutterBottom id="users">
-          Users
-        </Typography>
-        <Typography paragraph>
-          The Users endpoint allows you to manage user accounts. You can
-          create new users, retrieve user information, update user details,
-          and delete user accounts.
-        </Typography>
+
         <Typography variant="h4" gutterBottom>
-          GET /users
+          Parameters (Query Strings)
         </Typography>
-        <Typography paragraph>
-          Retrieve a list of all users or a specific user by ID.
-        </Typography>
+
+        <Paper elevation={3} sx={{ mb: 2 }}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>
+                  <strong>Parameter</strong>
+                </TableCell>
+                <TableCell>
+                  <strong>Type</strong>
+                </TableCell>
+                <TableCell>
+                  <strong>Description</strong>
+                </TableCell>
+                <TableCell>
+                  <strong>Required</strong>
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              <TableRow>
+                <TableCell>age</TableCell>
+                <TableCell>number (integer)</TableCell>
+                <TableCell>Your age in years.</TableCell>
+                <TableCell>Yes</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>height</TableCell>
+                <TableCell>number (float)</TableCell>
+                <TableCell>Your height in inches.</TableCell>
+                <TableCell>Yes</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>weight</TableCell>
+                <TableCell>number (float)</TableCell>
+                <TableCell>Your weight in pounds.</TableCell>
+                <TableCell>Yes</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>gender</TableCell>
+                <TableCell>string</TableCell>
+                <TableCell>
+                  Your gender, either "male" or "female".
+                </TableCell>
+                <TableCell>Yes</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>activityLevel</TableCell>
+                <TableCell>string</TableCell>
+                <TableCell>
+                  Your activity level, one of: "sedentary", "light",
+                  "moderate", "active", "extra".
+                </TableCell>
+                <TableCell>Yes</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </Paper>
+
         <Typography variant="h4" gutterBottom>
-          POST /users
+          Example Request
         </Typography>
-        <Typography paragraph>Create a new user account.</Typography>
-        <Typography variant="h3" gutterBottom id="posts">
-          Posts
-        </Typography>
-        <Typography paragraph>
-          The Posts endpoint allows you to manage blog posts. You can
-          create new posts, retrieve post information, update post content,
-          and delete posts.
-        </Typography>
+        <Paper
+          elevation={3}
+          sx={{ padding: '16px', marginBottom: '16px' }}
+        >
+          <Typography variant="body1" component="code">
+            GET
+            /api/macros?age=30&height=70&weight=175&gender=male&activityLevel=moderate
+          </Typography>
+        </Paper>
+
         <Typography variant="h4" gutterBottom>
-          GET /posts
+          Example Response
         </Typography>
-        <Typography paragraph>
-          Retrieve a list of all posts or a specific post by ID.
+        <Paper
+          elevation={3}
+          sx={{ padding: '16px', marginBottom: '16px' }}
+        >
+          <pre>{`{
+  "message": {
+    "bmi": 25.1096073620719,
+    "calories": 2728,
+    "protein": 175,
+    "fats": 91,
+    "carbs": 303
+  }
+}`}</pre>
+        </Paper>
+
+        <Typography variant="h5" gutterBottom>
+          Error Response
         </Typography>
-        <Typography variant="h4" gutterBottom>
-          POST /posts
-        </Typography>
-        <Typography paragraph>Create a new blog post.</Typography>
-        <Typography variant="h3" gutterBottom id="comments">
-          Comments
-        </Typography>
-        <Typography paragraph>
-          The Comments endpoint allows you to manage comments on blog
-          posts. You can create new comments, retrieve comment information,
-          update comment content, and delete comments.
-        </Typography>
-        <Typography variant="h4" gutterBottom>
-          GET /comments
-        </Typography>
-        <Typography paragraph>
-          Retrieve a list of all comments or comments for a specific post.
-        </Typography>
-        <Typography variant="h4" gutterBottom>
-          POST /comments
-        </Typography>
-        <Typography paragraph>
-          Create a new comment on a blog post.
-        </Typography>
+        <Paper elevation={3} sx={{ padding: '16px' }}>
+          <pre>{`{
+  "error": [
+    "age: Expected string, received null",
+    "height: Height must be a number",
+    "weight: Expected string, received null",
+    "gender: Gender must be \"male\" or \"female\"",
+    "activityLevel: Activity level must be one of sedentary, light, moderate, active, extra"
+  ]
+}`}</pre>
+        </Paper>
       </Container>
     </Box>
   );

@@ -1,7 +1,7 @@
 import { inchesToCm, poundsToKg } from '@/calculator/conversion';
 import { calculateMacronutrients } from '@/calculator/macroCalculator';
 import { activityLevels, genders } from '@/common/constants';
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 
 // Define the request schema
@@ -38,14 +38,21 @@ const requestSchema = z.object({
   }),
 });
 
-export async function GET(req: NextApiRequest, res: NextApiResponse) {
-  const query = requestSchema.safeParse(req.query);
+export async function GET(req: NextRequest) {
+  const params = req.nextUrl.searchParams;
+  const query = requestSchema.safeParse({
+    age: params.get('age'),
+    weight: params.get('weight'),
+    height: params.get('height'),
+    gender: params.get('gender'),
+    activityLevel: params.get('activityLevel'),
+  });
 
   if (!query.success) {
     const errorMessages = query.error.errors.map(
       (err) => `${err.path.join('.')}: ${err.message}`
     );
-    return res.status(400).json({ error: errorMessages });
+    return NextResponse.json({ error: errorMessages }, { status: 400 });
   }
 
   const weightInKg = poundsToKg(query.data.weight);
@@ -58,5 +65,5 @@ export async function GET(req: NextApiRequest, res: NextApiResponse) {
     query.data.activityLevel
   );
 
-  return res.status(200).json({ message: response });
+  return NextResponse.json({ message: response }, { status: 200 });
 }

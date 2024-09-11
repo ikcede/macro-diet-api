@@ -12,21 +12,24 @@ const darkTheme = createTheme({
   typography: {
     fontFamily: roboto.style.fontFamily,
     h1: {
-      fontSize: '3rem',
-      fontWeight: 'medium',
-    },
-    h2: {
       fontSize: '2.5rem',
       fontWeight: 'medium',
+      color: '#b7a1ff',
     },
-    h3: {
+    h2: {
       fontSize: '2rem',
       fontWeight: 'medium',
     },
-    h4: {
+    h3: {
       fontSize: '1.5rem',
       fontWeight: 'medium',
       color: '#b7a1ff',
+    },
+    h4: {
+      fontSize: '1.25rem',
+    },
+    h5: {
+      fontSize: '1rem',
     },
   },
   palette: {
