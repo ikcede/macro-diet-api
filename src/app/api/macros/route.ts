@@ -49,8 +49,8 @@ export async function GET(req: NextRequest) {
   });
 
   if (!query.success) {
-    const errorMessages = query.error.errors.map(
-      (err) => `${err.path.join('.')}: ${err.message}`
+    const errorMessages = query.error.issues.map(
+      (issue) => `${issue.path.join('.')}: ${issue.message}`
     );
     return NextResponse.json({ error: errorMessages }, { status: 400 });
   }
