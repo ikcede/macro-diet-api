@@ -7,3 +7,12 @@ body {
 * {
   box-sizing: border-box;
 }
+
+a {
+  color: #b7a1ff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

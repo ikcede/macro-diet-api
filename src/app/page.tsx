@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -15,6 +14,7 @@ import {
   TableCell,
   TableBody,
 } from '@mui/material';
+import Link from 'next/link';
 
 export default function Component() {
   return (
@@ -45,6 +45,9 @@ export default function Component() {
           This is a sample macronutrient calculator built with Github
           Codespaces, ChatGPT, Claude AI, and v0 by Vercel. It also uses
           zod for query validation.
+        </Typography>
+        <Typography variant="body1" sx={{ mb: 3 }}>
+          For the demo, click <Link href="/demo">here</Link>.
         </Typography>
         <Typography variant="h2" gutterBottom id="authentication">
           Authentication

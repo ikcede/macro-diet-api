@@ -6,18 +6,15 @@ import '@/styles/global.css';
 import CssBaseline from '@mui/material/CssBaseline';
 
 export const metadata: Metadata = {
-  title: 'NextJS Starter',
-  description: 'SEO description',
+  title: 'Macro Diet API',
+  description: 'A NextJS API application for calculating macros.',
   icons: {
     icon: '/favicon.ico',
   },
-  creator: '@me',
-  applicationName: 'NextJS Starter',
-  keywords: ['Next.js', 'React'],
-  category: 'technology',
-  verification: {
-    google: '{Google Token}',
-  },
+  creator: 'ikcede',
+  applicationName: 'Macro Diet API',
+  keywords: ['Next.js', 'React', 'API', 'Macros', 'Macro Diet'],
+  category: 'science',
 };
 
 export default function RootLayout({
