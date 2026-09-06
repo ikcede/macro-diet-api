@@ -3,5 +3,5 @@ import Page from './page';
 
 it('App Router: Works with Server Components', () => {
   render(<Page />);
-  expect(screen.getByRole('heading')).toHaveTextContent('App Router');
+  expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Macronutrient API');
 });
